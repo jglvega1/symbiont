@@ -82,7 +82,7 @@ function agroupStr (arr) {
 	let warp = undefined;
 	let word = ""
 	for(let item of arr) {
-		console.log(item, word, warp)
+		//console.log(item, word, warp)
 		if (str.includes(item)) {
 			if (warp == undefined) {
 				warp = item;
@@ -114,6 +114,18 @@ function agroupStr (arr) {
 
 
 //remove white spaces
+function cleanWhiteSpaces (arr) {
+	let result = [];
+	let ws = [" ", ' ', "\t","\r"];
+	for(let item of arr) {
+		if (ws.includes(item)) {
+			//console.log('is in ws')
+		} else {
+			result.push(item);
+		}
+	}
+	return result;
+}
 
 //let tokens
 let model = (ln, t, v, c) => {
@@ -129,7 +141,9 @@ function init (txt) {
 	let charList = getChars(txt);
 	let cleanedComments = cleanComments(charList);
 	let stringAgruped = agroupStr(cleanedComments);
-	return getWords(stringAgruped);
+	let words = getWords(stringAgruped);
+	words = cleanWhiteSpaces(words);
+	return words;
 }
 
 module.exports = txt => init(txt)

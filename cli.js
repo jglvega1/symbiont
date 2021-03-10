@@ -8,6 +8,7 @@ console.log('compaling ', path)
 let test = `
 "asda sadkcnksdc jns";
 asd sda sdac;
+	"kasndkc"
 `;
 
 let file = test || fs.readFileSync(path,{encoding:'utf8'});
