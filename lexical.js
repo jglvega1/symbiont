@@ -75,6 +75,44 @@ function cleanComments(arr){
 	return result;
 }
 
+//agroup string
+function agroupStr (arr) {
+	let result = [];
+	let str = ["'",'"'];
+	let warp = undefined;
+	let word = ""
+	for(let item of arr) {
+		console.log(item, word, warp)
+		if (str.includes(item)) {
+			if (warp == undefined) {
+				warp = item;
+			} else {
+				if (word.length > 0) {
+					result.push(word);
+					word = "";
+				}
+				warp = undefined;
+			}
+		} else {
+			if (warp != undefined) {
+				word += item;
+			} else {
+				if (word.length > 0) {
+					result.push(word);
+					word = "";
+				}
+				result.push(item);
+			}
+		}
+	}
+	if (word.length > 0) {
+		result.push(word);
+		word = "";
+	}
+	return result;
+}
+
+
 //remove white spaces
 
 //let tokens
@@ -90,7 +128,8 @@ let model = (ln, t, v, c) => {
 function init (txt) {
 	let charList = getChars(txt);
 	let cleanedComments = cleanComments(charList);
-	return getWords(cleanedComments);
+	let stringAgruped = agroupStr(cleanedComments);
+	return getWords(stringAgruped);
 }
 
 module.exports = txt => init(txt)
