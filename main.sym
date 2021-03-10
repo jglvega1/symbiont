@@ -1,0 +1,9 @@
+sum: [type="fn", async] = (a:[type="int"], b:[type="int"]) -> {
+	return a + b;
+};
+
+main = () -> {
+	n:[type="int"] = 0;
+	console.log("hola mundo");
+	console.log(sum(*n,5))
+};

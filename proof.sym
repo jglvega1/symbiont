@@ -1,0 +1,27 @@
+import[at="root" from="std"]();//imports all from std
+
+d = dom.createDocument('html');
+
+d.lang = "en";
+d.charset = "UTF-8";
+d.title = "Symbiont Document";
+
+//elmnt = dom.createElement('div');
+elmnt [dom="div"];
+
+sum [fn] = (a[type="int"] b[type="int"]) -> {
+	a + b//return isnt required if the last operation doesnt have ";"
+}
+
+elmnt.stlye = () -> {
+	this.margin = this.attrs.margin
+}
+
+elmnt[margin="0"];
+
+elmnt = () -> {
+	if this.margin == 0 {
+		//this.margin ++
+		this.margin += 2
+	}
+}
